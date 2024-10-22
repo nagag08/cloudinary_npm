@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  ps-jfrog-gitbub-oidc-npm-example:
      runs-on: ubuntu-24.04
      env:
       OIDC_AUDIENCE: 'ps-jfrog-oidc'
