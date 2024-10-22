@@ -1,4 +1,4 @@
-name: "ps-jfrog-gitbub-oidc-npm-publish"
+name: "ps-jfrog-gitbub-oidc-npm-example"
 on: push
 
 # This is required as per
@@ -36,16 +36,16 @@ jobs:
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
            
        - name: Install Dependencies
-         run: jf npm install --build-name="ps-jfrog-gitbub-oidc-npm-publish" --build-number=${{ github.run_number }}
+         run: jf npm install --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
          
        - name: Publish
-         run: jf npm publish --build-name="ps-jfrog-gitbub-oidc-npm-publish" --build-number=${{ github.run_number }}
+         run: jf npm publish --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
          
        - name: Publish Build info With JFrog CLI
          run: |
           # Collect environment variables for the build
-          jf rt bce ps-jfrog-gitbub-oidc-npm-publish ${{ github.run_number }}
+          jf rt bce $GITHUB_JOB ${{ github.run_number }}
           # Collect VCS details from git and add them to the build
-          jf rt build-add-git ps-jfrog-gitbub-oidc-npm-publish ${{ github.run_number }}
+          jf rt build-add-git $GITHUB_JOB ${{ github.run_number }}
           # Publish build info
-          jf rt bp ps-jfrog-gitbub-oidc-npm-publish ${{ github.run_number }}
+          jf rt bp $GITHUB_JOB ${{ github.run_number }}
