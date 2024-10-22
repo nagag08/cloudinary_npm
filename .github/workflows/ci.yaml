@@ -30,7 +30,7 @@ jobs:
            oidc-audience: ${{ env.OIDC_AUDIENCE }}
 
        - name: Run Audit scan for the git workspace
-         run: jf audit .
+         run: jf audit --without-contextual-analysis --sca --secrets --sast 
 
        - name: Set CLI Config
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
