@@ -6,7 +6,7 @@
     git:
       # [Mandatory]
       # Name of the git repository to scan
-      repoName: cloudinary-npm
+      repoName: cloudinary_npm
 
       # [Mandatory]
       # List of branches to scan

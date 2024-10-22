@@ -49,3 +49,7 @@ jobs:
           jf rt build-add-git $GITHUB_JOB ${{ github.run_number }}
           # Publish build info
           jf rt bp $GITHUB_JOB ${{ github.run_number }}
+       - name: Publish
+         run: |
+           sleep 30
+           jf bs $GITHUB_JOB ${{ github.run_number }}
