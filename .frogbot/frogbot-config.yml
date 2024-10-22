@@ -12,7 +12,6 @@
       # List of branches to scan
       branches:
         - main
-        - feature/test
     scan:
       includeAllVulnerabilities: true
       failOnSecurityIssues: false
