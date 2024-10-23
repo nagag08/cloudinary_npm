@@ -36,7 +36,7 @@ jobs:
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
            
        - name: Install Dependencies
-         run: jf npm install --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
+         run: jf npm install --loglevel=verbose --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} 
        - name: pack npm
          run: jf npm pack
          
@@ -47,8 +47,8 @@ jobs:
            docker build -t 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' .
            #jf docker scan 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} 
            jf docker push 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
-       - name: Npm Publish
-         run: jf npm publish --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
+           #       - name: Npm Publish
+           #run: jf npm publish --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
        
        - name: Publish Build info With JFrog CLI
          run: |
