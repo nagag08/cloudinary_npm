@@ -24,7 +24,7 @@ jobs:
         #     python-example/pip-example
       # Install prerequisites
       - name: Setup Node npm
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
           
       - uses: jfrog/frogbot@v2
         with:
