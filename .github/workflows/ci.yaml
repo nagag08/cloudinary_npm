@@ -36,7 +36,7 @@ jobs:
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
            
        - name: Install Dependencies
-         run: jf npm install --loglevel=verbose --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} 
+         run: jf npm install --loglevel=verbose 
        - name: pack npm
          run: jf npm pack
          
