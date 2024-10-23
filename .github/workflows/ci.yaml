@@ -16,10 +16,10 @@ jobs:
       PLATFORM_REPO: 'blr-npm-stage-virtual'
      steps:
        - name: Checkout
-         uses: actions/checkout@v3
+         uses: actions/checkout@v4
               
        - name: Setup Node npm
-         uses: actions/setup-node@v3
+         uses: actions/setup-node@v4
    
        - name: Setup JFrog CLI
          uses: jfrog/setup-jfrog-cli@v4
