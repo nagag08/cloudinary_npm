@@ -45,6 +45,8 @@ jobs:
          
        - name: build Dockerimage 
          run: |
+           pwd
+           ls -la
            docker build -t 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' .
            jf docker scan 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} 
            jf docker push 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}

@@ -14,3 +14,4 @@ coverage
 tools/cloudinary_url.sh
 package-lock.json
 .jfrog
+cloudinary-1.35.0.tgz
