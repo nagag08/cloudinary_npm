@@ -37,10 +37,18 @@ jobs:
            
        - name: Install Dependencies
          run: jf npm install --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
+       - name: pack npm
+         run: jf npm pack
          
        - name: Publish
          run: jf npm publish --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
          
+       - name: build Dockerimage 
+         run: |
+           docker build -t 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' .
+           jf docker scan 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} 
+           jf docker push 'psemea.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
+       
        - name: Publish Build info With JFrog CLI
          run: |
           # Collect environment variables for the build
@@ -49,7 +57,8 @@ jobs:
           jf rt build-add-git $GITHUB_JOB ${{ github.run_number }}
           # Publish build info
           jf rt bp $GITHUB_JOB ${{ github.run_number }}
-       - name: Publish
+
+       - name: buildscan
          run: |
            sleep 30
            jf bs --vuln --fail=false $GITHUB_JOB ${{ github.run_number }}
