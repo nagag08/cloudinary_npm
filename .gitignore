@@ -1,4 +1,5 @@
 node_modules/
+package1.json
 bower_components/
 .idea
 .DS_Store
