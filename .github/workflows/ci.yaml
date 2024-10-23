@@ -44,9 +44,9 @@ jobs:
          run: |
            pwd
            ls -la
-           docker build -t 'psazuse.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' .
-           jf docker scan 'psazuse.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} --vuln --fail=false --watches=notification
-           jf docker push 'psazuse.jfrog.io/default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
+           docker build -t 'psazuse.jfrog.io/nd-default-docker-local/cloudinary_npm:${{ github.run_number }}' .
+           jf docker scan 'psazuse.jfrog.io/nd-default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }} --vuln --fail=false --watches=notification
+           jf docker push 'psazuse.jfrog.io/nd-default-docker-local/cloudinary_npm:${{ github.run_number }}' --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
            #       - name: Npm Publish
            #run: jf npm publish --build-name=$GITHUB_JOB --build-number=${{ github.run_number }}
        
